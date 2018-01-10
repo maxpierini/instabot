@@ -19,7 +19,7 @@ from .bot_unlike import unlike, unlike_medias, unlike_user
 
 from .bot_photo import download_photo, download_photos, upload_photo
 
-from .bot_video import upload_video
+from .bot_video import upload_video, download_video, download_videos
 
 from .bot_direct import send_message, send_messages, send_media, send_medias, send_hashtag, send_profile, send_like
 
@@ -368,7 +368,13 @@ class Bot(API):
         return upload_photo(self, photo, caption, upload_id)
 
     # video
+    
+    def download_video(self, media_id, path='videos/', filename=None, description=False):
+        return download_video(self, media_id, path, filename, description)
 
+    def download_videos(self, medias, path='videos/', description=False):
+        return download_videos(self, medias, path, description)
+    
     def upload_video(self, video, thumbnail, caption=''):
         return upload_video(self, video, thumbnail, caption)
 
